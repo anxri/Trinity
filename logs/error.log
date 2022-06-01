@@ -1,0 +1,5 @@
+2022-05-28 13:20:48 (EDT) [ERROR] - In Trinity\exception\BaseException::__construct [500] - Error - Provide Variables in Router::compare_uri().
+2022-05-28 13:22:14 (EDT) [ERROR] - In Trinity\exception\BaseException::__construct [500] - Error - Provide Variables in Router::compare_uri().
+2022-05-28 13:23:59 (EDT) [ERROR] - In Trinity\exception\BaseException::__construct [500] - Error - Provide Variables in Router::compare_uri().
+2022-05-28 13:24:14 (EDT) [ERROR] - In Trinity\exception\BaseException::__construct [500] - Error - Provide Variables in Router::compare_uri().
+2022-05-28 13:30:52 (EDT) [ERROR] - In Trinity\exception\BaseException::__construct [500] - Error - Provide Variables in Router::compare_uri().
