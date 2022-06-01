@@ -4,8 +4,6 @@ namespace Trinity\http;
 
 use Trinity\exception\HttpException;
 
-require_once 'src/util/Singleton.php';
-
 class Router
 {
     private static bool             $active_route;
