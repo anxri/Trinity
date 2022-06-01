@@ -1,13 +1,5 @@
 <?php
 
-
-/**
- * Created by PhpStorm.
- * User: dejan
- * Date: 27.02.20
- * Time: 08:41
- */
-
 /**
  * @param $var
  */
