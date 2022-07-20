@@ -16,12 +16,15 @@ class Autoloader
 
     /**
      * @param string $path
+     *
      * @return void
      */
     public function add_directory( string $path )
     {
-        if( is_dir( $path ))
+        if ( is_dir( $path ) )
+        {
             $this->get_files_in_dir( $path );
+        }
     }
 
     /**
@@ -35,6 +38,7 @@ class Autoloader
 
     /**
      * @param $path
+     *
      * @return void
      */
     public function get_files_in_dir( $path )
@@ -46,15 +50,15 @@ class Autoloader
 
         foreach( $current_dir as $file )
         {
-            $real_path = realpath( $path."/".$file );
+            $real_path = realpath( $path . "/" . $file );
             $file_info = explode( '.', $file );
 
-            if( $file_info[sizeof( $file_info )-1] === "php" )
+            if ( $file_info[sizeof( $file_info ) - 1] === "php" )
             {
                 $this->files_to_include[] = $real_path;
             }
 
-            if( is_dir( $real_path ))
+            if ( is_dir( $real_path ) )
             {
                 $this->get_files_in_dir( $real_path );
             }

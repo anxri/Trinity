@@ -13,17 +13,15 @@ class Response
     {
         global $config;
 
-        if( $config['DEFAULT_CONTENT_TYPE'] === 'plain' )
+        if ( $config['DEFAULT_CONTENT_TYPE'] === 'plain' )
         {
             $this->get_header_value( 'Content-Type', 'text/plain' );
         }
-
-        else if( $config['DEFAULT_CONTENT_TYPE'] === 'html' )
+        else if ( $config['DEFAULT_CONTENT_TYPE'] === 'html' )
         {
             $this->get_header_value( 'Content-Type', 'text/html' );
         }
-
-        else if( $config['DEFAULT_CONTENT_TYPE'] === 'json' )
+        else if ( $config['DEFAULT_CONTENT_TYPE'] === 'json' )
         {
             $this->get_header_value( 'Content-Type', 'application/json' );
         }
@@ -31,6 +29,7 @@ class Response
 
     /**
      * @param $code
+     *
      * @return void
      */
     public function set_status_code( $code )
@@ -42,11 +41,12 @@ class Response
     /**
      * @param string $name
      * @param string $value
+     *
      * @return void
      */
-    public function get_header_value(string $name, string $value )
+    public function get_header_value( string $name, string $value )
     {
-        header( $name.': '.$value );
+        header( $name . ': ' . $value );
     }
 
     /**

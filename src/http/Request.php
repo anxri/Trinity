@@ -2,8 +2,6 @@
 
 namespace Trinity\http;
 
-use Trinity\util\Log;
-
 require_once 'src/util/Singleton.php';
 
 class Request
@@ -16,9 +14,8 @@ class Request
      */
     public function __construct()
     {
-
         $this->header = getallheaders();
-        $this->body = file_get_contents('php://input');
+        $this->body = file_get_contents( 'php://input' );
     }
 
     /**
@@ -31,11 +28,12 @@ class Request
 
     /**
      * @param string $key
+     *
      * @return mixed|null
      */
     public function get_header_value( string $key )
     {
-        if( in_array( $key, $this->header ))
+        if ( in_array( $key, $this->header ) )
         {
             return $this->header[$key];
         }
@@ -48,6 +46,7 @@ class Request
     /**
      * @param string $key
      * @param string $value
+     *
      * @return void
      */
     public function set_header_value( string $key, string $value )
@@ -65,6 +64,7 @@ class Request
 
     /**
      * @param string $body
+     *
      * @return void
      */
     public function set_body( string $body )

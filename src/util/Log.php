@@ -11,6 +11,7 @@
  *      $print          default: false                              specifies if printig is enabled by default
  *
  */
+
 namespace Trinity\util;
 
 class Log
@@ -35,50 +36,59 @@ class Log
      * @param int|null $global_print
      * @param string $date_format
      * @param string $log_format
+     *
      * @throws \Exception
      */
     public function __construct(
-        string $log_path='/tmp/trinity_default.log',
-        int $global_print=NULL,
-        string $date_format=self::DEFAULT_DATE_FORMAT,
-        string $log_format=self::DEFAULT_MSG_FORMAT
+        string $log_path = '/tmp/trinity_default.log',
+        int    $global_print = NULL,
+        string $date_format = self::DEFAULT_DATE_FORMAT,
+        string $log_format = self::DEFAULT_MSG_FORMAT
     )
     {
-        $this->log_path 	        = $log_path;
-        $this->global_date_format 	= $date_format;
-        $this->global_print_mode 	= $global_print;
-        $this->log_types 	        = [];
+        $this->log_path = $log_path;
+        $this->global_date_format = $date_format;
+        $this->global_print_mode = $global_print;
+        $this->log_types = [];
 
         $this->set_log_format( $log_format );
-        
-        if( !file_exists( $this->log_path ))
-            mkdir( dirname( $this->log_path ), $recursive=TRUE );
+
+        if ( !file_exists( $this->log_path ) )
+        {
+            mkdir( dirname( $this->log_path ), $recursive = TRUE );
+        }
     }
 
     /**
      * @param int $type
      * @param string $msg
      * @param int|NULL $print
+     *
      * @return void
      */
-    private function log_internal( string $type, string $msg, int $print=NULL )
+    private function log_internal( string $type, string $msg, int $print = NULL )
     {
         $msg = str_replace( "\n", "", $msg );
         $log_msg = $this->construct_msg( $type, $msg );
 
-        if( $this->global_print_mode )
-            if( $print )
-                echo $log_msg."\n";
+        if ( $this->global_print_mode )
+        {
+            if ( $print )
+            {
+                echo $log_msg . "\n";
+            }
+        }
 
-        file_put_contents( $this->log_path, $log_msg."\n", FILE_APPEND );
+        file_put_contents( $this->log_path, $log_msg . "\n", FILE_APPEND );
     }
 
     /**
      * @param string $log_format
+     *
      * @return void
      * @throws \Exception
      */
-    private function set_log_format( string $log_format ) : void
+    private function set_log_format( string $log_format ): void
     {
         // check if all variables set
         foreach( self::$needles as $needle )
@@ -92,9 +102,10 @@ class Log
     /**
      * @param string $type
      * @param string $msg
+     *
      * @return string
      */
-    private function construct_msg( string $type, string $msg ) : string
+    private function construct_msg( string $type, string $msg ): string
     {
         $log = str_replace( self::$needles[0], $this->get_date_str(), $this->global_log_format );      // date
         $log = str_replace( self::$needles[1], $type, $log );                                           // type
@@ -104,20 +115,25 @@ class Log
     /**
      * @return string
      */
-    private function get_date_str() : string
+    private function get_date_str(): string
     {
-        if( $this->global_date_format == NULL )
+        if ( $this->global_date_format == NULL )
+        {
             return date();
+        }
         else
+        {
             return date( $this->global_date_format );
+        }
     }
 
     /**
      * @param string $msg
      * @param int $print
+     *
      * @return void
      */
-    public function fatal(string $msg, int $print=1 )
+    public function fatal( string $msg, int $print = 1 )
     {
         $this->log_internal( 'FATAL', $msg, $print );
     }
@@ -125,9 +141,10 @@ class Log
     /**
      * @param string $msg
      * @param int $print
+     *
      * @return void
      */
-    public function error(string $msg, int $print=1 )
+    public function error( string $msg, int $print = 1 )
     {
         $this->log_internal( 'ERROR', $msg, $print );
     }
@@ -135,9 +152,10 @@ class Log
     /**
      * @param string $msg
      * @param int $print
+     *
      * @return void
      */
-    public function warn(string $msg, int $print=1 )
+    public function warn( string $msg, int $print = 1 )
     {
         $this->log_internal( 'WARN', $msg, $print );
     }
@@ -145,9 +163,10 @@ class Log
     /**
      * @param string $msg
      * @param int $print
+     *
      * @return void
      */
-    public function info(string $msg, int $print=1 )
+    public function info( string $msg, int $print = 1 )
     {
         $this->log_internal( 'INFO', $msg, $print );
     }
@@ -155,9 +174,10 @@ class Log
     /**
      * @param string $msg
      * @param int $print
+     *
      * @return void
      */
-    public function debug(string $msg, int $print=1 )
+    public function debug( string $msg, int $print = 1 )
     {
         $this->log_internal( 'DEBUG', $msg, $print );
     }
@@ -165,9 +185,10 @@ class Log
     /**
      * @param string $msg
      * @param int $print
+     *
      * @return void
      */
-    public function trace(string $msg, int $print=1 )
+    public function trace( string $msg, int $print = 1 )
     {
         $this->log_internal( 'TRACE', $msg, $print );
     }

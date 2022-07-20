@@ -1,15 +1,15 @@
 {
-    "name": "noxx/trinity",
-    "description": "Micro API Framework.",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "noxx",
-            "email": "info@noxx.digital"
-        }
-    ],
-    "require": {
-        "mongodb/mongodb": "^1.11"
+  "name": "noxx/trinity",
+  "description": "Micro API Framework.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "noxx",
+      "email": "info@noxx.digital"
     }
+  ],
+  "require": {
+    "mongodb/mongodb": "^1.11"
+  }
 }

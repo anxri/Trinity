@@ -12,8 +12,8 @@ require_once 'src/util/Autoloader.php';
 
 $autoloader = new Autoloader();             // trinity only autoloader
 
-$autoloader->add_directory('src');
-$autoloader->add_directory('app');
+$autoloader->add_directory( 'src' );
+$autoloader->add_directory( 'app' );
 
 $autoloader->autoload();
 

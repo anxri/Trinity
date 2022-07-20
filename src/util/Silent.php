@@ -12,18 +12,18 @@ abstract class Silent
     /**
      * Silent constructor.
      */
-	public function __construct()
-	{
-		ob_start();
-	}
+    public function __construct()
+    {
+        ob_start();
+    }
 
     /**
      *
      */
-	final public function __destruct()
-	{
-		ob_end_clean();
-	}
+    final public function __destruct()
+    {
+        ob_end_clean();
+    }
 
     /**
      * @param $name
@@ -32,15 +32,12 @@ abstract class Silent
      */
     public function __get( $name )
     {
-	    return NULL;
-	}
+        return NULL;
+    }
 
     /**
      * @param $name
      * @param $value
      */
-    public function __set( $name, $value )
-    {
-
-    }
+    public function __set( $name, $value ){}
 }

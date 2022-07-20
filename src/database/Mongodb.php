@@ -6,16 +6,10 @@ use MongoDB\Client;
 
 trait Mongodb
 {
-    private $connection_str = 'mongodb://localhost:27017';
-    private $database_name = 'trinity';
-
-    public $client;
-    public $database;
-    public $collection;
-
     public function init_mongodb()
     {
-        $this->client = new Client();
-        $this->database = $this->client->trinity;
+        global $config;
+        $this->client = new Client( 'mongodb://' . $config['MONGODB_HOST'] . ':' . $config['MONGODB_PORT'] );
+        $this->database = $this->client->{$config['PDO_DATABASE']};
     }
 }
